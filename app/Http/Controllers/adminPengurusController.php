@@ -102,15 +102,16 @@ class adminPengurusController extends Controller
         $pengurus->link_linkedin = $request->linkedin;
 
         if ($request->hasFile('foto')) {
-            // Hapus gambar lama jika ada
-            if ($pengurus->foto && Storage::exists('public/foto_pengurus/' . $pengurus->foto)) {
-                Storage::delete('public/foto_pengurus/' . $pengurus->foto);
+            // Hapus gambar lama dengan unlink
+            $oldImagePath = public_path('storage/foto_pengurus/' . $pengurus->foto);
+            if ($pengurus->foto && file_exists($oldImagePath)) {
+                unlink($oldImagePath);
             }
 
             // Simpan gambar baru dengan nama timestamp
             $file = $request->file('foto');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('public/foto_pengurus', $filename);
+            $file->move(public_path('storage/foto_pengurus'), $filename);
             $pengurus->foto = $filename;
         }
 
@@ -128,9 +129,9 @@ class adminPengurusController extends Controller
     {
         $pengurus = Pengurus::findOrFail($id);
 
-        // Hapus gambar dari storage jika ada
-        if ($pengurus->foto && Storage::exists('public/foto_pengurus/' . $pengurus->foto)) {
-            Storage::delete('public/foto_pengurus/' . $pengurus->foto);
+        $imagePath = public_path('storage/foto_pengurus/' . $pengurus->foto);
+        if ($pengurus->foto && file_exists($imagePath)) {
+            unlink($imagePath);
         }
 
         $pengurus->delete();

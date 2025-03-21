@@ -13,6 +13,7 @@ Route::get('/', function () {
 // Bagian Admin
 Route::get('/admin/dashboard', [adminDashboardController::class, 'index'])->name('admin.dashboard');
 
+// Kelola Pengurus
 Route::get('/admin/daftar-pengurus', [adminPengurusController::class, 'index'])->name('admin.daftar-pengurus');
 Route::get('/admin/tambah-pengurus', [adminPengurusController::class, 'create'])->name('admin.tambah-pengurus');
 Route::post('/admin/store-pengurus', [adminPengurusController::class, 'store'])->name('admin.store-pengurus');
@@ -20,6 +21,7 @@ Route::get('/admin/edit-pengurus/{id}', [adminPengurusController::class, 'edit']
 Route::put('/admin/update-pengurus/{id}', [adminPengurusController::class, 'update'])->name('admin.update-pengurus');
 Route::delete('/admin/delete-pengurus/{id}', [adminPengurusController::class, 'destroy'])->name('admin.delete-pengurus');
 
+// Kelola Divisi
 route::get('admin/daftar-divisi', [adminDivisiController::class, 'index'])->name('admin.daftar-divisi');
 route::get('admin/tambah-divisi', [adminDivisiController::class, 'create'])->name('admin.tambah-divisi');
 Route::post('/admin/store-divisi}', [adminDivisiController::class, 'store'])->name('admin.store-divisi');
