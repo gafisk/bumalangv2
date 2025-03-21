@@ -27,7 +27,7 @@
     </a>
     <div class="collapse" id="manajemenberita" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
         <nav class="sb-sidenav-menu-nested nav">
-            <a class="nav-link" href="">Kelola Berita</a>
+            <a class="nav-link" href="{{ route('admin.daftar-berita') }}">Kelola Berita</a>
         </nav>
     </div>
     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#manajemenaktivitas"
