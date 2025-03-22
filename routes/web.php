@@ -5,7 +5,9 @@ use App\Http\Controllers\adminDashboardController;
 use App\Http\Controllers\adminDivisiController;
 use App\Http\Controllers\adminFooterController;
 use App\Http\Controllers\adminPengurusController;
+use App\Http\Controllers\adminUniversitasController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -50,6 +52,7 @@ Route::prefix('administrator')->group(function () {
         Route::put('/draft/{id}', [adminBeritaController::class, 'draft'])->name('admin.draft-berita');
     });
 
+    // Kelola Footer
     Route::prefix('footer')->group(function () {
         Route::get('/', [adminFooterController::class, 'index'])->name('admin.daftar-footer');
         Route::get('/tambah', [adminFooterController::class, 'create'])->name('admin.tambah-footer');
@@ -57,5 +60,15 @@ Route::prefix('administrator')->group(function () {
         Route::get('/edit/{id}', [adminFooterController::class, 'edit'])->name('admin.edit-footer');
         Route::put('/update/{id}', [adminFooterController::class, 'update'])->name('admin.update-footer');
         Route::delete('/delete/{id}', [adminFooterController::class, 'destroy'])->name('admin.delete-footer');
+    });
+
+    // Kelola Universitas
+    Route::prefix('universitas')->group(function () {
+        Route::get('/', [adminUniversitasController::class, 'index'])->name('admin.daftar-universitas');
+        Route::get('/tambah', [adminUniversitasController::class, 'create'])->name('admin.tambah-universitas');
+        Route::post('/store', [adminUniversitasController::class, 'store'])->name('admin.store-universitas');
+        Route::get('/edit/{id}', [adminUniversitasController::class, 'edit'])->name('admin.edit-universitas');
+        Route::put('/update/{id}', [adminUniversitasController::class, 'update'])->name('admin.update-universitas');
+        Route::delete('/delete/{id}', [adminUniversitasController::class, 'destroy'])->name('admin.delete-universitas');
     });
 });
