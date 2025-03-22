@@ -11,32 +11,40 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 // Bagian Admin
-Route::get('/administrator', [adminDashboardController::class, 'index'])->name('admin.dashboard');
+Route::prefix('administrator')->group(function () {
+    Route::get('/', [adminDashboardController::class, 'index'])->name('admin.dashboard');
 
-// Kelola Pengurus
-Route::get('/administrator/daftar-pengurus', [adminPengurusController::class, 'index'])->name('admin.daftar-pengurus');
-Route::get('/administrator/tambah-pengurus', [adminPengurusController::class, 'create'])->name('admin.tambah-pengurus');
-Route::post('/administrator/store-pengurus', [adminPengurusController::class, 'store'])->name('admin.store-pengurus');
-Route::get('/administrator/edit-pengurus/{id}', [adminPengurusController::class, 'edit'])->name('admin.edit-pengurus');
-Route::put('/administrator/update-pengurus/{id}', [adminPengurusController::class, 'update'])->name('admin.update-pengurus');
-Route::delete('/administrator/delete-pengurus/{id}', [adminPengurusController::class, 'destroy'])->name('admin.delete-pengurus');
+    // Kelola Pengurus
+    Route::prefix('pengurus')->group(function () {
+        Route::get('/', [adminPengurusController::class, 'index'])->name('admin.daftar-pengurus');
+        Route::get('/tambah', [adminPengurusController::class, 'create'])->name('admin.tambah-pengurus');
+        Route::post('/store', [adminPengurusController::class, 'store'])->name('admin.store-pengurus');
+        Route::get('/edit/{id}', [adminPengurusController::class, 'edit'])->name('admin.edit-pengurus');
+        Route::put('/update/{id}', [adminPengurusController::class, 'update'])->name('admin.update-pengurus');
+        Route::delete('/delete/{id}', [adminPengurusController::class, 'destroy'])->name('admin.delete-pengurus');
+    });
 
-// Kelola Divisi
-Route::get('/administrator/daftar-divisi', [adminDivisiController::class, 'index'])->name('admin.daftar-divisi');
-Route::get('/administrator/tambah-divisi', [adminDivisiController::class, 'create'])->name('admin.tambah-divisi');
-Route::post('/administrator/store-divisi}', [adminDivisiController::class, 'store'])->name('admin.store-divisi');
-Route::get('/administrator/edit-divisi/{id}', [adminDivisiController::class, 'edit'])->name('admin.edit-divisi');
-Route::put('/administrator/update-divisi/{id}', [adminDivisiController::class, 'update'])->name('admin.update-divisi');
-Route::delete('/administrator/delete-divisi/{id}', [AdminDivisiController::class, 'destroy'])->name('admin.delete-divisi');
+    // Kelola Divisi
+    Route::prefix('divisi')->group(function () {
+        Route::get('/', [adminDivisiController::class, 'index'])->name('admin.daftar-divisi');
+        Route::get('/tambah', [adminDivisiController::class, 'create'])->name('admin.tambah-divisi');
+        Route::post('/store', [adminDivisiController::class, 'store'])->name('admin.store-divisi');
+        Route::get('/edit/{id}', [adminDivisiController::class, 'edit'])->name('admin.edit-divisi');
+        Route::put('/update/{id}', [adminDivisiController::class, 'update'])->name('admin.update-divisi');
+        Route::delete('/delete/{id}', [adminDivisiController::class, 'destroy'])->name('admin.delete-divisi');
+    });
 
-
-// Kelola Berita
-Route::get('/administrator/daftar-berita', [adminBeritaController::class, 'index'])->name('admin.daftar-berita');
-Route::get('/administrator/tambah-berita', [adminBeritaController::class, 'create'])->name('admin.tambah-berita');
-Route::post('/administrator/store-berita', [adminBeritaController::class, 'store'])->name('admin.store-berita');
-Route::get('/administrator/edit-berita/{id}', [adminBeritaController::class, 'edit'])->name('admin.edit-berita');
-Route::put('/administrator/update-berita/{id}', [adminBeritaController::class, 'update'])->name('admin.update-berita');
-Route::delete('/administrator/delete-berita/{id}', [adminBeritaController::class, 'destroy'])->name('admin.delete-berita');
-Route::put('/administrator/publish-berita/{id}', [adminBeritaController::class, 'publish'])->name('admin.publish-berita');
-Route::put('/administrator/draft-berita/{id}', [adminBeritaController::class, 'draft'])->name('admin.draft-berita');
+    // Kelola Berita
+    Route::prefix('berita')->group(function () {
+        Route::get('/', [adminBeritaController::class, 'index'])->name('admin.daftar-berita');
+        Route::get('/tambah', [adminBeritaController::class, 'create'])->name('admin.tambah-berita');
+        Route::post('/store', [adminBeritaController::class, 'store'])->name('admin.store-berita');
+        Route::get('/edit/{id}', [adminBeritaController::class, 'edit'])->name('admin.edit-berita');
+        Route::put('/update/{id}', [adminBeritaController::class, 'update'])->name('admin.update-berita');
+        Route::delete('/delete/{id}', [adminBeritaController::class, 'destroy'])->name('admin.delete-berita');
+        Route::put('/publish/{id}', [adminBeritaController::class, 'publish'])->name('admin.publish-berita');
+        Route::put('/draft/{id}', [adminBeritaController::class, 'draft'])->name('admin.draft-berita');
+    });
+});
