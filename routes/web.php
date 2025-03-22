@@ -6,14 +6,14 @@ use App\Http\Controllers\adminDivisiController;
 use App\Http\Controllers\adminFooterController;
 use App\Http\Controllers\adminPengurusController;
 use App\Http\Controllers\adminUniversitasController;
+use App\Http\Controllers\homeIndexController;
 use Illuminate\Support\Facades\Route;
 
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [homeIndexController::class, 'index'])->name('home.index');
 
 
 // Bagian Admin
