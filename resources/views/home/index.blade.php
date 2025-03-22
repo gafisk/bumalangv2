@@ -1,10 +1,10 @@
-@extends('layouts.home')
-
 @php
     $sarjana = $data_jumlahawardee->where('kategori_awardee', 'Sarjana')->first();
     $magister = $data_jumlahawardee->where('kategori_awardee', 'Magister')->first();
     $doktor = $data_jumlahawardee->where('kategori_awardee', 'Doktor')->first();
 @endphp
+
+@extends('layouts.home')
 
 @section('hero')
     <!-- Hero Section -->
