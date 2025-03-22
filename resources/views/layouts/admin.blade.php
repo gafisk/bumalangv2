@@ -46,6 +46,27 @@
         </div>
         <div id="layoutSidenav_content">
             <main>
+                @php
+                    $breadcrumbs = \App\Helpers\Breadcrumbs::generate();
+                @endphp
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb d-flex justify-content-end me-3 mt-2">
+                        @foreach ($breadcrumbs as $breadcrumb)
+                            <li class="breadcrumb-item {{ $loop->last ? 'active' : '' }}">
+                                @if (!$loop->last)
+                                    <a href="{{ $breadcrumb['url'] }}">{{ $breadcrumb['name'] }}</a>
+                                @else
+                                    {{ $breadcrumb['name'] }}
+                                @endif
+                            </li>
+                        @endforeach
+                    </ol>
+                </nav>
+
+
+
+
                 @yield('content')
             </main>
             <footer class="py-4 bg-light mt-auto">
