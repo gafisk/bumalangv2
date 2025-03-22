@@ -68,6 +68,7 @@
             <a class="nav-link" href="{{ route('admin.daftar-divisi') }}">Kelola Divisi</a>
             <a class="nav-link" href="{{ route('admin.daftar-footer') }}">Kelola Footer</a>
             <a class="nav-link" href="{{ route('admin.daftar-universitas') }}">Kelola Universitas</a>
+            <a class="nav-link" href="{{ route('admin.daftar-jumlahawardee') }}">Kelola Jumlah Awardee</a>
         </nav>
     </div>
 </div>

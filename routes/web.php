@@ -4,10 +4,12 @@ use App\Http\Controllers\adminBeritaController;
 use App\Http\Controllers\adminDashboardController;
 use App\Http\Controllers\adminDivisiController;
 use App\Http\Controllers\adminFooterController;
+use App\Http\Controllers\adminJumlahAwardeeController;
 use App\Http\Controllers\adminPengurusController;
 use App\Http\Controllers\adminUniversitasController;
 use App\Http\Controllers\homeIndexController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -70,5 +72,15 @@ Route::prefix('administrator')->group(function () {
         Route::get('/edit/{id}', [adminUniversitasController::class, 'edit'])->name('admin.edit-universitas');
         Route::put('/update/{id}', [adminUniversitasController::class, 'update'])->name('admin.update-universitas');
         Route::delete('/delete/{id}', [adminUniversitasController::class, 'destroy'])->name('admin.delete-universitas');
+    });
+
+    // Kelola Jumlah Awardee
+    Route::prefix('jumlah-awardee')->group(function () {
+        Route::get('/', [adminJumlahAwardeeController::class, 'index'])->name('admin.daftar-jumlahawardee');
+        Route::get('/tambah', [adminJumlahAwardeeController::class, 'create'])->name('admin.tambah-jumlahawardee');
+        Route::post('/store', [adminJumlahAwardeeController::class, 'store'])->name('admin.store-jumlahawardee');
+        Route::get('/edit/{id}', [adminJumlahAwardeeController::class, 'edit'])->name('admin.edit-jumlahawardee');
+        Route::put('/update/{id}', [adminJumlahAwardeeController::class, 'update'])->name('admin.update-jumlahawardee');
+        Route::delete('/delete/{id}', [adminJumlahAwardeeController::class, 'destroy'])->name('admin.delete-jumlahawardee');
     });
 });
