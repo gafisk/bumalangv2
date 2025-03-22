@@ -35,11 +35,13 @@ class adminBeritaController extends Controller
             'isi_berita' => 'required',
         ]);
 
-
-        $file = $request->file('foto_berita');
-        $filename = time() . '.' . $file->getClientOriginalExtension();
-        $path = $file->storeAs('foto_berita', $filename, 'public');
-
+        if ($request->hasFile('foto_berita')) {
+            $file = $request->file('foto_berita');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('foto_berita', $filename, 'public');
+        } else {
+            $filename = "";
+        }
         // Simpan ke Database
         Berita::create([
             'foto' => $filename,
