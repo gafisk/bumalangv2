@@ -3,8 +3,10 @@
 use App\Http\Controllers\adminBeritaController;
 use App\Http\Controllers\adminDashboardController;
 use App\Http\Controllers\adminDivisiController;
+use App\Http\Controllers\adminFooterController;
 use App\Http\Controllers\adminPengurusController;
 use Illuminate\Support\Facades\Route;
+
 
 
 Route::get('/', function () {
@@ -46,5 +48,14 @@ Route::prefix('administrator')->group(function () {
         Route::delete('/delete/{id}', [adminBeritaController::class, 'destroy'])->name('admin.delete-berita');
         Route::put('/publish/{id}', [adminBeritaController::class, 'publish'])->name('admin.publish-berita');
         Route::put('/draft/{id}', [adminBeritaController::class, 'draft'])->name('admin.draft-berita');
+    });
+
+    Route::prefix('footer')->group(function () {
+        Route::get('/', [adminFooterController::class, 'index'])->name('admin.daftar-footer');
+        Route::get('/tambah', [adminFooterController::class, 'create'])->name('admin.tambah-footer');
+        Route::post('/store', [adminFooterController::class, 'store'])->name('admin.store-footer');
+        Route::get('/edit/{id}', [adminFooterController::class, 'edit'])->name('admin.edit-footer');
+        Route::put('/update/{id}', [adminFooterController::class, 'update'])->name('admin.update-footer');
+        Route::delete('/delete/{id}', [adminFooterController::class, 'destroy'])->name('admin.delete-footer');
     });
 });

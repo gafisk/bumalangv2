@@ -66,7 +66,7 @@
     <div class="collapse" id="manajemenweb" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
         <nav class="sb-sidenav-menu-nested nav">
             <a class="nav-link" href="{{ route('admin.daftar-divisi') }}">Kelola Divisi</a>
-            <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+            <a class="nav-link" href="{{ route('admin.daftar-footer') }}">Kelola Footer</a>
         </nav>
     </div>
 </div>
