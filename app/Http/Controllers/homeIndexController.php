@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Footer;
+use App\Models\JumlahAwardee;
 use App\Models\Universitas;
 use Illuminate\Http\Request;
 
@@ -15,9 +16,10 @@ class homeIndexController extends Controller
     {
         $data_organisasi = Footer::first();
         $data_universitas = Universitas::all();
+        $data_jumlahawardee = JumlahAwardee::all();
 
         $jumlah_univ = $data_universitas->count();
-        return view('home.index', compact('data_organisasi', 'data_universitas', 'jumlah_univ'));
+        return view('home.index', compact('data_organisasi', 'data_universitas', 'jumlah_univ', 'data_jumlahawardee'));
     }
 
     /**

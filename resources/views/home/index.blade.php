@@ -1,5 +1,11 @@
 @extends('layouts.home')
 
+@php
+    $sarjana = $data_jumlahawardee->where('kategori_awardee', 'Sarjana')->first();
+    $magister = $data_jumlahawardee->where('kategori_awardee', 'Magister')->first();
+    $doktor = $data_jumlahawardee->where('kategori_awardee', 'Doktor')->first();
+@endphp
+
 @section('hero')
     <!-- Hero Section -->
     <section id="hero" class="hero section light-background">
@@ -222,8 +228,8 @@
                 <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
                     <i class="bi bi-mortarboard"></i> <!-- Topi wisuda -->
                     <div class="stats-item">
-                        <span data-purecounter-start="0" data-purecounter-end="2" data-purecounter-duration="1"
-                            class="purecounter"></span>
+                        <span data-purecounter-start="0" data-purecounter-end="{{ $sarjana->total_awardee ?? 0 }}"
+                            data-purecounter-duration="1" class="purecounter"></span>
                         <p>Awardee Program Sarjana</p>
                     </div>
                 </div><!-- End Stats Item -->
@@ -231,8 +237,8 @@
                 <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
                     <i class="bi bi-mortarboard"></i> <!-- Topi wisuda -->
                     <div class="stats-item">
-                        <span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1"
-                            class="purecounter"></span>
+                        <span data-purecounter-start="0" data-purecounter-end="{{ $magister->total_awardee ?? 0 }}"
+                            data-purecounter-duration="1" class="purecounter"></span>
                         <p>Awardee Program Magister</p>
                     </div>
                 </div><!-- End Stats Item -->
@@ -240,8 +246,8 @@
                 <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
                     <i class="bi bi-mortarboard"></i> <!-- Topi wisuda -->
                     <div class="stats-item">
-                        <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1"
-                            class="purecounter"></span>
+                        <span data-purecounter-start="0" data-purecounter-end="{{ $doktor->total_awardee ?? 0 }}"
+                            data-purecounter-duration="1" class="purecounter"></span>
                         <p>Awardee Program Doktor</p>
                     </div>
                 </div><!-- End Stats Item -->
