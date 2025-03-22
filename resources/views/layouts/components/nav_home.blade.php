@@ -19,7 +19,7 @@
                 <li><a href="">Anggaran Dasar dan Anggaran Rumah Tangga</a></li>
             </ul>
         </li>
-        <li><a href="">Berita</a></li>
+        <li><a href="{{ route('home.berita') }}">Berita</a></li>
         <li class="dropdown"><a href="#"><span>Aktivitas</span> <i
                     class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>

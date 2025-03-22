@@ -7,6 +7,7 @@ use App\Http\Controllers\adminFooterController;
 use App\Http\Controllers\adminJumlahAwardeeController;
 use App\Http\Controllers\adminPengurusController;
 use App\Http\Controllers\adminUniversitasController;
+use App\Http\Controllers\homeBeritaController;
 use App\Http\Controllers\homeIndexController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [homeIndexController::class, 'index'])->name('home.index');
+
+// Bagian Berita
+Route::prefix('berita')->group(function () {
+    Route::get('/', [homeBeritaController::class, 'index'])->name('home.berita');
+    Route::get('/page/{id}', [homeBeritaController::class, 'page'])->name('home.page-berita');
+});
 
 
 // Bagian Admin
