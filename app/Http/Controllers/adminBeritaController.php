@@ -40,7 +40,7 @@ class adminBeritaController extends Controller
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $path = $file->storeAs('foto_berita', $filename, 'public');
         } else {
-            $filename = "";
+            $filename = NULL;
         }
         // Simpan ke Database
         Berita::create([
