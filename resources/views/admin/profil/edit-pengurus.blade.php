@@ -17,64 +17,90 @@
 
                         <div class="mb-3">
                             <label for="nama_divisi" class="form-label">Nama Divisi</label>
-                            <select name="nama_divisi" id="nama_divisi" class="form-control" required>
+                            <select name="nama_divisi" id="nama_divisi" class="form-control">
                                 <option value="">--Pilih Divisi--</option>
                                 @foreach ($divisis as $divisi)
                                     <option value="{{ $divisi->id }}"
-                                        {{ $pengurus->id_divisi == $divisi->id ? 'selected' : '' }}>
+                                        {{ old('nama_divisi', $pengurus->id_divisi) == $divisi->id ? 'selected' : '' }}>
                                         {{ $divisi->nama_divisi }}
                                     </option>
                                 @endforeach
                             </select>
+                            @error('nama_divisi')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
 
                         <div class="mb-3">
                             <label for="jabatan" class="form-label">Status Jabatan</label>
-                            <select name="jabatan" id="jabatan" class="form-control" required>
+                            <select name="jabatan" id="jabatan" class="form-control">
                                 <option value="">--Pilih Jabatan--</option>
-                                <option value="pembina" {{ $pengurus->jabatan == 'pembina' ? 'selected' : '' }}>Pembina
+                                <option value="pembina"
+                                    {{ old('jabatan', $pengurus->jabatan) == 'pembina' ? 'selected' : '' }}>Pembina</option>
+                                <option value="penasihat"
+                                    {{ old('jabatan', $pengurus->jabatan) == 'penasihat' ? 'selected' : '' }}>Penasihat
                                 </option>
-                                <option value="penasihat" {{ $pengurus->jabatan == 'penasihat' ? 'selected' : '' }}>
-                                    Penasihat</option>
-                                <option value="ketua" {{ $pengurus->jabatan == 'ketua' ? 'selected' : '' }}>Ketua Umum
+                                <option value="ketua"
+                                    {{ old('jabatan', $pengurus->jabatan) == 'ketua' ? 'selected' : '' }}>Ketua Umum
                                 </option>
-                                <option value="wake1" {{ $pengurus->jabatan == 'wake1' ? 'selected' : '' }}>Wakil Ketua 1
+                                <option value="wake1"
+                                    {{ old('jabatan', $pengurus->jabatan) == 'wake1' ? 'selected' : '' }}>Wakil Ketua 1
                                 </option>
-                                <option value="wake2" {{ $pengurus->jabatan == 'wake2' ? 'selected' : '' }}>Wakil Ketua 2
+                                <option value="wake2"
+                                    {{ old('jabatan', $pengurus->jabatan) == 'wake2' ? 'selected' : '' }}>Wakil Ketua 2
                                 </option>
-                                <option value="sekretaris" {{ $pengurus->jabatan == 'sekretaris' ? 'selected' : '' }}>
-                                    Sekretaris</option>
-                                <option value="bendahara" {{ $pengurus->jabatan == 'bendahara' ? 'selected' : '' }}>
-                                    Bendahara</option>
-                                <option value="koordinator" {{ $pengurus->jabatan == 'koordinator' ? 'selected' : '' }}>
-                                    Koordinator</option>
-                                <option value="anggota" {{ $pengurus->jabatan == 'anggota' ? 'selected' : '' }}>Anggota
+                                <option value="sekretaris"
+                                    {{ old('jabatan', $pengurus->jabatan) == 'sekretaris' ? 'selected' : '' }}>Sekretaris
+                                </option>
+                                <option value="bendahara"
+                                    {{ old('jabatan', $pengurus->jabatan) == 'bendahara' ? 'selected' : '' }}>Bendahara
+                                </option>
+                                <option value="koordinator"
+                                    {{ old('jabatan', $pengurus->jabatan) == 'koordinator' ? 'selected' : '' }}>Koordinator
+                                </option>
+                                <option value="anggota"
+                                    {{ old('jabatan', $pengurus->jabatan) == 'anggota' ? 'selected' : '' }}>Anggota
                                 </option>
                             </select>
+                            @error('jabatan')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
 
                         <div class="mb-3">
                             <label for="nama_pengurus" class="form-label">Nama Pengurus</label>
                             <input type="text" name="nama_pengurus" id="nama_pengurus" class="form-control"
-                                value="{{ $pengurus->nama_pengurus }}" required>
+                                value="{{ old('nama_pengurus', $pengurus->nama_pengurus) }}">
+                            @error('nama_pengurus')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
 
                         <div class="mb-3">
                             <label for="asal_univ" class="form-label">Asal Universitas</label>
                             <input type="text" name="asal_univ" id="asal_univ" class="form-control"
-                                value="{{ $pengurus->univ_pengurus }}" required>
+                                value="{{ old('asal_univ', $pengurus->univ_pengurus) }}">
+                            @error('asal_univ')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
 
                         <div class="mb-3">
                             <label for="instagram" class="form-label">Link Instagram</label>
                             <input type="url" name="instagram" id="instagram" class="form-control"
-                                value="{{ $pengurus->link_instagram }}" required>
+                                value="{{ old('instagram', $pengurus->link_instagram) }}">
+                            @error('instagram')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
 
                         <div class="mb-3">
                             <label for="linkedin" class="form-label">Link Linkedin</label>
                             <input type="url" name="linkedin" id="linkedin" class="form-control"
-                                value="{{ $pengurus->link_linkedin }}" required>
+                                value="{{ old('linkedin', $pengurus->link_linkedin) }}">
+                            @error('linkedin')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
 
                         <div class="mb-3">

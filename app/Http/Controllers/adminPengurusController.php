@@ -32,15 +32,30 @@ class adminPengurusController extends Controller
      */
     public function store(Request $request)
     {
+        $messages = [
+            'nama_divisi.required' => 'Pilih salah satu Nama Divisi',
+            'jabatan.required' => 'Pilih salah satu Nama Jabatan',
+            'nama_pengurus.required' => 'Form Nama Pengurus tidak boleh kosong',
+            'asal_univ.required' => 'Form Nama Universitas tidak boleh kosong',
+            'instagram.required' => 'Form Link Instagram tidak boleh kosong',
+            'linkedin.required' => 'Form Link Linkedin tidak boleh kosong',
+            'foto.required' => 'Form Foto Pengurus tidak boleh kosong',
+
+            'asal_univ.regex' => 'Nama Universitas harus diawal dengan kata Universitas ....',
+
+            'instagram.url' => 'Inputan Link Instagram harus berupa link',
+            'linkedin.url' => 'Inputan Link Linkedin harus berupa link',
+        ];
+
         $request->validate([
             'nama_divisi' => 'required|exists:divisis,id',
             'jabatan' => 'required',
             'nama_pengurus' => 'required|string|max:255',
-            'asal_univ' => 'required|string|max:255',
+            'asal_univ' => 'required|string|max:255|regex:/^Universitas\s.*/i',
             'instagram' => 'required|url',
             'linkedin' => 'required|url',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+        ], $messages);
 
         // Proses upload file dengan nama timestamp
         $file = $request->file('foto');
@@ -83,15 +98,30 @@ class adminPengurusController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $messages = [
+            'nama_divisi.required' => 'Pilih salah satu Nama Divisi',
+            'jabatan.required' => 'Pilih salah satu Nama Jabatan',
+            'nama_pengurus.required' => 'Form Nama Pengurus tidak boleh kosong',
+            'asal_univ.required' => 'Form Nama Universitas tidak boleh kosong',
+            'instagram.required' => 'Form Link Instagram tidak boleh kosong',
+            'linkedin.required' => 'Form Link Linkedin tidak boleh kosong',
+            'foto.required' => 'Form Foto Pengurus tidak boleh kosong',
+
+            'asal_univ.regex' => 'Nama Universitas harus diawal dengan kata Universitas ....',
+
+            'instagram.url' => 'Inputan Link Instagram harus berupa link',
+            'linkedin.url' => 'Inputan Link Linkedin harus berupa link',
+        ];
+
         $request->validate([
             'nama_divisi' => 'required|exists:divisis,id',
             'jabatan' => 'required',
             'nama_pengurus' => 'required|string|max:255',
-            'asal_univ' => 'required|string|max:255',
+            'asal_univ' => 'required|string|max:255|regex:/^Universitas\s.*/i',
             'instagram' => 'required|url',
             'linkedin' => 'required|url',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+        ], $messages);
 
         $pengurus = Pengurus::findOrFail($id);
         $pengurus->id_divisi = $request->nama_divisi;
