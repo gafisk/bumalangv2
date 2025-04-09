@@ -13,8 +13,11 @@ class homeBeritaController extends Controller
      */
     public function index()
     {
-        $beritas = Berita::orderBy('created_at', 'desc')->paginate(6);
         $data_organisasi = Footer::first();
+
+        $beritas = Berita::where('status', 'publish')
+            ->orderBy('created_at', 'desc')
+            ->paginate(6);
         return view('home.berita.berita', compact('beritas', 'data_organisasi'));
     }
 
