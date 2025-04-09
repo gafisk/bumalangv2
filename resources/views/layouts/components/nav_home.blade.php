@@ -8,10 +8,10 @@
         <li><a href="{{ route('home.index') }}" class="active">Beranda</a></li>
         <li class="dropdown"><a href="#"><span>Profil</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-                <li><a href="#sejarah">Sejarah</a></li>
+                <li><a href="{{ route('home.index') }}#sejarah">Sejarah</a></li>
                 <!-- <li><a href="#">Struktur Organisasi</a></li> -->
-                <li><a href="#lambang">Makna dan Lambang</a></li>
-                <li><a href="#visimisi">Visi dan Misi</a></li>
+                <li><a href="{{ route('home.index') }}#lambang">Makna dan Lambang</a></li>
+                <li><a href="{{ route('home.index') }}#visimisi">Visi dan Misi</a></li>
                 <li><a href="{{ route('home.pengurus') }}">Profil Pengurus</a></li>
                 <li><a href="">Program Kerja</a></li>
                 <li><a href="">Laporan Keuangan</a></li>
