@@ -9,7 +9,9 @@ use App\Http\Controllers\adminPengurusController;
 use App\Http\Controllers\adminUniversitasController;
 use App\Http\Controllers\homeBeritaController;
 use App\Http\Controllers\homeIndexController;
+use App\Http\Controllers\homePengurusController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -23,6 +25,8 @@ Route::prefix('berita')->group(function () {
     Route::get('/', [homeBeritaController::class, 'index'])->name('home.berita');
     Route::get('/page/{id}', [homeBeritaController::class, 'page'])->name('home.page-berita');
 });
+
+Route::get('pengurus', [homePengurusController::class, 'index'])->name('home.pengurus');
 
 
 // Bagian Admin

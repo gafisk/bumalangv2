@@ -12,7 +12,7 @@
                 <!-- <li><a href="#">Struktur Organisasi</a></li> -->
                 <li><a href="#lambang">Makna dan Lambang</a></li>
                 <li><a href="#visimisi">Visi dan Misi</a></li>
-                <li><a href="">Profil Pengurus</a></li>
+                <li><a href="{{ route('home.pengurus') }}">Profil Pengurus</a></li>
                 <li><a href="">Program Kerja</a></li>
                 <li><a href="">Laporan Keuangan</a></li>
                 <li><a href="">Laporan Pertanggungjawaban</a></li>
