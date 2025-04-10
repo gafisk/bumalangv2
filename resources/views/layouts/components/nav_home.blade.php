@@ -13,7 +13,7 @@
                 <li><a href="{{ route('home.index') }}#lambang">Makna dan Lambang</a></li>
                 <li><a href="{{ route('home.index') }}#visimisi">Visi dan Misi</a></li>
                 <li><a href="{{ route('home.pengurus') }}">Profil Pengurus</a></li>
-                <li><a href="">Program Kerja</a></li>
+                <li><a href="{{ route('home.proker') }}">Program Kerja</a></li>
                 <li><a href="">Laporan Keuangan</a></li>
                 <li><a href="">Laporan Pertanggungjawaban</a></li>
                 <li><a href="">Anggaran Dasar dan Anggaran Rumah Tangga</a></li>

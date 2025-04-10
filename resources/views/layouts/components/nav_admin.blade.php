@@ -14,7 +14,7 @@
     <div class="collapse" id="manajemenprofil" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
         <nav class="sb-sidenav-menu-nested nav">
             <a class="nav-link" href="{{ route('admin.daftar-pengurus') }}">Pengurus</a>
-            <a class="nav-link" href="">Program Kerja</a>
+            <a class="nav-link" href="{{ route('admin.daftar-proker') }}">Program Kerja</a>
             <a class="nav-link" href="">L Keuangan</a>
             <a class="nav-link" href="">L Pertanggungjawaban</a>
         </nav>

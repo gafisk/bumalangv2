@@ -6,11 +6,15 @@ use App\Http\Controllers\adminDivisiController;
 use App\Http\Controllers\adminFooterController;
 use App\Http\Controllers\adminJumlahAwardeeController;
 use App\Http\Controllers\adminPengurusController;
+use App\Http\Controllers\adminProkerController;
 use App\Http\Controllers\adminUniversitasController;
 use App\Http\Controllers\homeBeritaController;
 use App\Http\Controllers\homeIndexController;
 use App\Http\Controllers\homePengurusController;
+use App\Http\Controllers\homeProkerController;
 use Illuminate\Support\Facades\Route;
+
+
 
 
 
@@ -20,13 +24,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [homeIndexController::class, 'index'])->name('home.index');
 
-// Bagian Berita
+// Bagian Home Berita
 Route::prefix('berita')->group(function () {
     Route::get('/', [homeBeritaController::class, 'index'])->name('home.berita');
     Route::get('/page/{id}', [homeBeritaController::class, 'page'])->name('home.page-berita');
 });
 
+// Bagian Home Profil
 Route::get('pengurus', [homePengurusController::class, 'index'])->name('home.pengurus');
+
+Route::prefix('proker')->group(function () {
+    Route::get('/', [homeProkerController::class, 'index'])->name('home.proker');
+    Route::get('/page/{id}', [homeProkerController::class, 'page'])->name('home.page-proker');
+});
+
 
 
 // Bagian Admin
@@ -41,6 +52,16 @@ Route::prefix('administrator')->group(function () {
         Route::get('/edit/{id}', [adminPengurusController::class, 'edit'])->name('admin.edit-pengurus');
         Route::put('/update/{id}', [adminPengurusController::class, 'update'])->name('admin.update-pengurus');
         Route::delete('/delete/{id}', [adminPengurusController::class, 'destroy'])->name('admin.delete-pengurus');
+    });
+
+    // Kelola Proker
+    Route::prefix('proker')->group(function () {
+        Route::get('/', [adminProkerController::class, 'index'])->name('admin.daftar-proker');
+        Route::get('/tambah', [adminProkerController::class, 'create'])->name('admin.tambah-proker');
+        Route::post('/store', [adminProkerController::class, 'store'])->name('admin.store-proker');
+        Route::get('/edit/{id}', [adminProkerController::class, 'edit'])->name('admin.edit-proker');
+        Route::put('/update/{id}', [adminProkerController::class, 'update'])->name('admin.update-proker');
+        Route::delete('/delete/{id}', [adminProkerController::class, 'destroy'])->name('admin.delete-proker');
     });
 
     // Kelola Divisi
