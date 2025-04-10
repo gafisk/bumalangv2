@@ -22,14 +22,6 @@ class homeProkerController extends Controller
         return view('home.profil.proker', compact('data_organisasi', 'prokers'));
     }
 
-    public function page($id)
-    {
-        $data_organisasi = Footer::first();
-
-        $proker = Proker::findOrFail($id);
-        return view('home.profil.page-proker', compact('proker', 'data_organisasi'));
-    }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -51,7 +43,10 @@ class homeProkerController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data_organisasi = Footer::first();
+
+        $proker = Proker::findOrFail($id);
+        return view('home.profil.page-proker', compact('proker', 'data_organisasi'));
     }
 
     /**

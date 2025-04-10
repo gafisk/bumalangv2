@@ -21,14 +21,6 @@ class homeBeritaController extends Controller
         return view('home.berita.berita', compact('beritas', 'data_organisasi'));
     }
 
-    public function page($id)
-    {
-
-        $berita = Berita::findOrFail($id);
-        $data_organisasi = Footer::first();
-        return view('home.berita.page-berita', compact('berita', 'data_organisasi'));
-    }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -50,7 +42,9 @@ class homeBeritaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $berita = Berita::findOrFail($id);
+        $data_organisasi = Footer::first();
+        return view('home.berita.page-berita', compact('berita', 'data_organisasi'));
     }
 
     /**

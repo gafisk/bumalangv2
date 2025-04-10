@@ -43,7 +43,7 @@
 
                                 <!-- Tombol di bagian bawah -->
                                 <div class="mt-auto">
-                                    <a href="{{ route('home.page-berita', $berita->id) }}"
+                                    <a href="{{ route('home.show-berita', $berita->id) }}"
                                         class="btn btn-primary w-100">Baca Selengkapnya</a>
                                 </div>
                             </div>

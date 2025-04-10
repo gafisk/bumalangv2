@@ -33,7 +33,7 @@
                                     {{ $proker->tahun }}</h5>
                             </ul>
                             <div class="btn-wrap">
-                                <a href="{{ route('home.page-proker', $proker->id) }}" class="btn-buy">Baca Program
+                                <a href="{{ route('home.show-proker', $proker->id) }}" class="btn-buy">Baca Program
                                     Kerja</a>
                             </div>
                         </div>

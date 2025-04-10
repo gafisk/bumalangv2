@@ -30,7 +30,7 @@ Route::get('/', [homeIndexController::class, 'index'])->name('home.index');
 // Bagian Home Berita
 Route::prefix('berita')->group(function () {
     Route::get('/', [homeBeritaController::class, 'index'])->name('home.berita');
-    Route::get('/page/{id}', [homeBeritaController::class, 'page'])->name('home.page-berita');
+    Route::get('/show/{id}', [homeBeritaController::class, 'show'])->name('home.show-berita');
 });
 
 // Bagian Home Profil
@@ -38,7 +38,7 @@ Route::get('pengurus', [homePengurusController::class, 'index'])->name('home.pen
 
 Route::prefix('proker')->group(function () {
     Route::get('/', [homeProkerController::class, 'index'])->name('home.proker');
-    Route::get('/page/{id}', [homeProkerController::class, 'page'])->name('home.page-proker');
+    Route::get('/show/{id}', [homeProkerController::class, 'show'])->name('home.show-proker');
 });
 
 Route::prefix('lapkeu')->group(function () {
