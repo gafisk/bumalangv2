@@ -19,7 +19,7 @@ class homePengurusController extends Controller
             return $item->divisi->nama_divisi;
         });
         // dd($datas);
-        return view('home.pengurus.profil-pengurus', compact('datas', 'data_organisasi'));
+        return view('home.profil.profil-pengurus', compact('datas', 'data_organisasi'));
     }
 
     /**
