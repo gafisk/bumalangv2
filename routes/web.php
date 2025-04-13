@@ -15,6 +15,7 @@ use App\Http\Controllers\homeIndexController;
 use App\Http\Controllers\homeLapkeuController;
 use App\Http\Controllers\homePengurusController;
 use App\Http\Controllers\homeProkerController;
+use App\Http\Middleware\checkAdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
 
@@ -48,15 +49,15 @@ Route::prefix('lapkeu')->group(function () {
 });
 
 
+// Bagian Login
+Route::prefix('adminbu')->group(function () {
+    route::get('/', [adminLoginController::class, 'index'])->name('admin.login');
+    route::post('/log', [adminLoginController::class, 'store'])->name('admin.log');
+    route::post('/logout', [adminLoginController::class, 'logout'])->name('admin.logout');
+});
 
 // Bagian Admin
-Route::prefix('administrator')->group(function () {
-
-    Route::prefix('login')->group(function () {
-        route::get('/', [adminLoginController::class, 'index'])->name('admin.login');
-        route::post('/log', [adminLoginController::class, 'store'])->name('admin.log');
-        route::post('/logout', [adminLoginController::class, 'logout'])->name('admin.logout');
-    });
+Route::prefix('administrator')->middleware([checkAdminMiddleware::class])->group(function () {
 
     Route::get('/', [adminDashboardController::class, 'index'])->name('admin.dashboard');
 
