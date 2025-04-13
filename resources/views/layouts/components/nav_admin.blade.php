@@ -5,20 +5,22 @@
         Dashboard
     </a>
     {{-- <div class="sb-sidenav-menu-heading">Interface</div> --}}
-    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#manajemenprofil"
-        aria-expanded="false" aria-controls="manajemenprofil">
-        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-        M Profil
-        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-    </a>
-    <div class="collapse" id="manajemenprofil" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-        <nav class="sb-sidenav-menu-nested nav">
-            <a class="nav-link" href="{{ route('admin.daftar-pengurus') }}">Pengurus</a>
-            <a class="nav-link" href="{{ route('admin.daftar-proker') }}">Program Kerja</a>
-            <a class="nav-link" href="{{ route('admin.daftar-lapkeu') }}">L Keuangan</a>
-            <a class="nav-link" href="">L Pertanggungjawaban</a>
-        </nav>
-    </div>
+    @if (session('role') !== 'kodiv')
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#manajemenprofil"
+            aria-expanded="false" aria-controls="manajemenprofil">
+            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+            M Profil
+            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+        </a>
+        <div class="collapse" id="manajemenprofil" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+            <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" href="{{ route('admin.daftar-pengurus') }}">Pengurus</a>
+                <a class="nav-link" href="{{ route('admin.daftar-proker') }}">Program Kerja</a>
+                <a class="nav-link" href="{{ route('admin.daftar-lapkeu') }}">L Keuangan</a>
+                <a class="nav-link" href="">L Pertanggungjawaban</a>
+            </nav>
+        </div>
+    @endif
     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#manajemenberita"
         aria-expanded="false" aria-controls="manajemenberita">
         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -57,18 +59,20 @@
             <a class="nav-link" href="">P Publikasi</a>
         </nav>
     </div>
-    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#manajemenweb"
-        aria-expanded="false" aria-controls="manajemenweb">
-        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-        M Web
-        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-    </a>
-    <div class="collapse" id="manajemenweb" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-        <nav class="sb-sidenav-menu-nested nav">
-            <a class="nav-link" href="{{ route('admin.daftar-divisi') }}">Kelola Divisi</a>
-            <a class="nav-link" href="{{ route('admin.daftar-footer') }}">Kelola Footer</a>
-            <a class="nav-link" href="{{ route('admin.daftar-universitas') }}">Kelola Universitas</a>
-            <a class="nav-link" href="{{ route('admin.daftar-jumlahawardee') }}">Kelola Jumlah Awardee</a>
-        </nav>
-    </div>
+    @if (session('role') === 'super_admin')
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#manajemenweb"
+            aria-expanded="false" aria-controls="manajemenweb">
+            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+            M Web
+            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+        </a>
+        <div class="collapse" id="manajemenweb" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+            <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" href="{{ route('admin.daftar-divisi') }}">Kelola Divisi</a>
+                <a class="nav-link" href="{{ route('admin.daftar-footer') }}">Kelola Footer</a>
+                <a class="nav-link" href="{{ route('admin.daftar-universitas') }}">Kelola Universitas</a>
+                <a class="nav-link" href="{{ route('admin.daftar-jumlahawardee') }}">Kelola Jumlah Awardee</a>
+            </nav>
+        </div>
+    @endif
 </div>

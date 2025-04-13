@@ -6,6 +6,7 @@ use App\Http\Controllers\adminDivisiController;
 use App\Http\Controllers\adminFooterController;
 use App\Http\Controllers\adminJumlahAwardeeController;
 use App\Http\Controllers\adminLapkeuController;
+use App\Http\Controllers\adminLoginController;
 use App\Http\Controllers\adminPengurusController;
 use App\Http\Controllers\adminProkerController;
 use App\Http\Controllers\adminUniversitasController;
@@ -50,6 +51,13 @@ Route::prefix('lapkeu')->group(function () {
 
 // Bagian Admin
 Route::prefix('administrator')->group(function () {
+
+    Route::prefix('login')->group(function () {
+        route::get('/', [adminLoginController::class, 'index'])->name('admin.login');
+        route::post('/log', [adminLoginController::class, 'store'])->name('admin.log');
+        route::post('/logout', [adminLoginController::class, 'logout'])->name('admin.logout');
+    });
+
     Route::get('/', [adminDashboardController::class, 'index'])->name('admin.dashboard');
 
     // Kelola Pengurus
